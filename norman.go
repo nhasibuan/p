@@ -63,8 +63,8 @@ func s(murid *siswa) bool {
 
 // go mod init p
 // git init
-// git add .\norman.go
-// git commit -m "Initial commit"
+// git add .\norman.go 1
+// git commit -m "Initial commit" 1
 // git branch -M p
 // git remote add origin https://github.com/nhasibuan/p.git
-// git push -u origin p
+// git push -u origin p 1
