@@ -6,6 +6,9 @@ var (
 	k        int
 	p        *int
 	student1 siswa
+	shape    bangund
+	rect     persegip
+	square   bujurs
 )
 
 type address struct {
@@ -18,6 +21,35 @@ type siswa struct {
 	umur   int
 	status bool
 	alamat address
+}
+
+type bangund interface {
+	luas() int
+	keliling() int
+}
+
+type persegip struct {
+	panjang, lebar int
+}
+
+func (p persegip) luas() int {
+	return p.panjang * p.lebar
+}
+
+func (p persegip) keliling() int {
+	return 2 * (p.panjang + p.lebar)
+}
+
+type bujurs struct {
+	sisi int
+}
+
+func (b bujurs) luas() int {
+	return b.sisi * b.sisi
+}
+
+func (b bujurs) keliling() int {
+	return 4 * b.sisi
 }
 
 func main() {
@@ -49,6 +81,40 @@ func main() {
 		},
 	}
 	f.Println(student2)
+	ss(siswa{
+		nama:   "Rulita",
+		umur:   16,
+		status: true,
+		alamat: address{
+			jalan:     "Jalan Raya Jagakarsa",
+			kelurahan: "Jagakarsa",
+		},
+	})
+	//
+	student3 := struct {
+		nama   string
+		umur   int
+		status bool
+		alamat address
+	}{
+		nama:   "Delima",
+		umur:   10,
+		status: true,
+		alamat: address{
+			jalan:     "Jalan Raya Jagakarsa",
+			kelurahan: "Jagakarsa",
+		},
+	}
+	ss(student3)
+	//
+	rect.panjang = 15
+	rect.lebar = 10
+	f.Println(rect.luas(), rect.keliling())
+	rect := persegip{
+		panjang: 10,
+		lebar:   6,
+	}
+	f.Println(rect.luas(), rect.keliling())
 }
 
 func m(p *int) {
@@ -60,6 +126,10 @@ func s(murid *siswa) bool {
 	f.Println(*&murid.status)
 	return !murid.status
 } //
+
+func ss(pelajar siswa) {
+	f.Println(pelajar.nama)
+}
 
 // go mod init p
 // git init
